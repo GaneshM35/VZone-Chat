@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+?>
 
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome User !</title>
+    <title>VZone Chat!</title>
 </head>
 <body>
-    <h2>Welcome New USER???</h2>
+    <h2>Welcome <?php echo $_SESSION['user_mail']; ?></h2>
 </body>
 </html>
