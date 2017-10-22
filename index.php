@@ -10,8 +10,8 @@
 			<div id = "header">
 				<img src="images/logo.jpg" style="float:left;" width="120px" />
 				<form method="POST" action="" id="login1">
-					<strong>Email :</strong><input type="text" name="email" placeholder="Email" />
-					<strong>Password :</strong><input type="password" name="password" placeholder="password" />
+					<strong>Email :</strong><input type="text" name="email" placeholder="Email" required="required" />
+					<strong>Password :</strong><input type="password" name="password" placeholder="password" required="required"/>
 					<button name="Login">Login</button>
 				</form>
 			</div>
@@ -19,27 +19,28 @@
 
         <div id="content">
             <div>
-                <img src="images/banner.jpg" style="float: left; width: 450px">
+                <img src="images/banner.jpg" style="float: left;padding-top:  20px; margin-left: -40px; width: 500px" />
             </div>
-            <div>
+            <div id="form2">
                 <form action="" method="post">
+                    <h2>Sign Up Here!!!</h2>
                     <table>
                         <tr>
                             <td Align="right">Name:</td>
-                            <td><input  type="text" name="User_name" placeholder="Enter Your Name"></td>
+                            <td><input  type="text" name="User_name" placeholder="Enter Your Name" required="required"/></td>
                         </tr>
                         <tr>
                             <td Align="right">Password:</td>
-                            <td><input  type="password" name="User_pswd" placeholder="Enter Password"></td>
+                            <td><input  type="password" name="User_pswd" placeholder="Enter Password" required="required"/></td>
                         </tr>
                         <tr>
                             <td Align="right">Email-id:</td>
-                            <td><input  type="text" name="User_mail" placeholder="Enter Your Mail-id"></td>
+                            <td><input  type="text" name="User_mail" placeholder="Enter Your Mail-id" required="required"/></td>
                         </tr>
                         <tr>
                             <td Align="right">Country:</td>
                             <td>
-                                <select name="User_country">
+                                <select name="User_country" required="required">
                                     <option>Select a Country</option>
                                     <option>India</option>
                                     <option>China</option>
@@ -51,7 +52,7 @@
                         <tr>
                             <td Align="right">Gender:</td>
                             <td>
-                                <select name="User_gender">
+                                <select name="User_gender" required="required">
                                     <option>Select a Gender</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -66,13 +67,17 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
+                            <td colspan="6">
                             <button name="sign_up">Sign Up</button>
                             </td>
                         </tr>
                     </table>
                 </form>
             </div>
+        </div>
+
+        <div id="footer">
+            <h2>&copy; 2014-2018 Mango Technologies Pvt Ltd, INDIA</h2>
         </div>
 
 	</div>
