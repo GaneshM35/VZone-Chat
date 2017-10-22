@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<?php
+include("includes/user_function.php")
+?>
+
 <html>
 <head>
 	<title>Chatty Boy</title>
@@ -10,7 +15,7 @@
 			<div id = "header">
 				<img src="images/logo.jpg" style="float:left;" width="120px" />
 				<form method="POST" action="" id="login1">
-					<strong>Email :</strong><input type="text" name="email" placeholder="Email" required="required" />
+					<strong>Email :</strong><input type="email" name="email" placeholder="Email" required="required" />
 					<strong>Password :</strong><input type="password" name="password" placeholder="password" required="required"/>
 					<button name="Login">Login</button>
 				</form>
@@ -35,17 +40,17 @@
                         </tr>
                         <tr>
                             <td Align="right">Email-id:</td>
-                            <td><input  type="text" name="User_mail" placeholder="Enter Your Mail-id" required="required"/></td>
+                            <td><input  type="email" name="User_mail" placeholder="Enter Your Mail-id" required="required"/></td>
                         </tr>
                         <tr>
                             <td Align="right">Country:</td>
                             <td>
                                 <select name="User_country" required="required">
                                     <option>Select a Country</option>
-                                    <option>India</option>
-                                    <option>China</option>
-                                    <option>Japan</option>
-                                    <option>Dubai</option>
+                                    <option value="india">India</option>
+                                    <option value="china">China</option>
+                                    <option value="japan">Japan</option>
+                                    <option value="dubai">Dubai</option>
                                 </select>
                             </td>
                         </tr>
@@ -54,9 +59,9 @@
                             <td>
                                 <select name="User_gender" required="required">
                                     <option>Select a Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Trans-Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="transgender">Trans-Gender</option>
                                 </select>
                             </td>
                         </tr>
@@ -72,7 +77,9 @@
                             </td>
                         </tr>
                     </table>
+                    <div id="errMail"></div>
                 </form>
+                <?php addUser(); ?>
             </div>
         </div>
 
