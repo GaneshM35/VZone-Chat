@@ -1,6 +1,8 @@
 <?php
     session_start();
     include ("config/connection.php");
+    include ("function/functions.php");
+    //$user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +51,7 @@
                     $runUser = mysqli_query($con,$getUser);
                     $row = mysqli_fetch_array($runUser);
 
-                    $id = $row['user_id'];
+                    $user_id = $row['user_id'];
                     $name = $row['user_name'];
                     $country = $row["user_country"];
                     $image = $row['user_image'];
@@ -75,6 +77,19 @@
                 </div>
             </div>
             <div id="content_timeline">
+                <form action="home.php?id=<?php echo $user_id; ?>" method="post" id="postForm">
+                    <h2>Do you have any question today? </h2>
+                    <input type="text" name="title" placeholder="Question about??" size="70"/>
+                    <br>
+                    <textarea cols="71" rows="4" name="content" placeholder="Description.."></textarea>
+                    <br>
+                    <select name="topic">
+                        <option>Select Topic</option>
+                        <?php getTopics(); ?>
+                    </select>
+                    <input type="submit" name="postSub" value="Post to Timeline" />
+                </form>
+                <?php insertPost(); ?>
                 <div id="post">
 
                 </div>
