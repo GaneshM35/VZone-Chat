@@ -45,24 +45,31 @@
                 <div id="user_details">
                     <?php
                     $user = $_SESSION['user_mail'];
-                    $getUser = 'SELECT * from users where user_mail="$user"';
+                    $getUser = "SELECT * from users where user_mail='$user'";
                     $runUser = mysqli_query($con,$getUser);
-                    $row = mysqli_fetch_array($runUser,MYSQLI_BOTH);
+                    $row = mysqli_fetch_array($runUser);
 
                     $id = $row['user_id'];
-                    $name = $row[1];
+                    $name = $row['user_name'];
                     $country = $row["user_country"];
                     $image = $row['user_image'];
                     $register = $row['registed_date'];
                     $last = $row['last_login'];
 
-                    echo $name;
+                    // echo $name;
 
-                    echo "<p><img src='user/user_images/$image' width='200px' height='200px' /></p>
+                    echo "<center><img src='user/user_images/$image' width='200px' height='200px' /></center>
+                          <div id='user_details_block'>
                           <p><strong>Name : </strong> $name </p>
                           <p><strong>Country : </strong> $country</p>
                           <p><strong>Last Login : </strong> $last</p>
-                          <p><strong>Member Since : </strong> $register</p>";
+                          <p><strong>Member Since : </strong> $register</p>
+                          
+                          <p><a href='my_messages.php'>Messages</a> </p>
+                          <p><a href='my_posts.php'>My Post</a> </p>
+                          <p><a href='edit_profile.php'>Edit My Account</a> </p>
+                          <p><a href='logout.php'>Logout</a> </p>
+                          </div>";
 
                     ?>
                 </div>
