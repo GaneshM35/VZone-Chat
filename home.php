@@ -79,9 +79,9 @@
             <div id="content_timeline">
                 <form action="home.php?id=<?php echo $user_id; ?>" method="post" id="postForm">
                     <h2>Do you have any question today? </h2>
-                    <input type="text" name="title" placeholder="Question about??" size="70"/>
+                    <input type="text" name="title" placeholder="Question about??" size="82"/>
                     <br>
-                    <textarea cols="71" rows="4" name="content" placeholder="Description.."></textarea>
+                    <textarea cols="83" rows="4" name="content" placeholder="Description.."></textarea>
                     <br>
                     <select name="topic">
                         <option>Select Topic</option>
@@ -90,12 +90,13 @@
                     <input type="submit" name="postSub" value="Post to Timeline" />
                 </form>
                 <?php insertPost(); ?>
-                <div id="post">
 
-                </div>
+                <h3>Most recent Disscussions!!</h3>
+                <?php getPost(); ?>
+
             </div>
         </div>
-
+    <?php include 'template/footer.php'; ?>
     </div >
 </body>
 </html>
