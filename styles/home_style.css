@@ -155,7 +155,7 @@ body {
 
 #posts{
     width:600px;
-    background-color: cornflowerblue;;
+    background-color: cornflowerblue;
     padding: 10px;
     line-height: 20px;
     border: 1px solid black;
@@ -172,6 +172,14 @@ body {
     color: brown;
 }
 
+#posts button{
+    padding: 2px;
+}
+
+#posts button:hover{
+    background-color: #00FFFF;
+}
+
 #pagination{
     margin-top: 20px;
 }
@@ -186,6 +194,31 @@ body {
 #pagination a:hover{
     color: #00FFFF;
     font-weight: bold;
+}
+
+#replayForm textarea{
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    background: cornflowerblue;
+}
+
+#replayForm input{
+    padding: 8px;
+    float: right;
+    margin-right: 80px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#replayForm input:hover{
+    background-color: #00FFFF;
 }
 
 #footer{

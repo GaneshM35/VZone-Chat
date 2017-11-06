@@ -30,18 +30,24 @@
             $content = addslashes($_POST['content']);
             $topic = $_POST['topic'];
 
-            $insert = "insert into post (user_id,topic_id,post_title,post_content,post_date) values ('$user_id','$topic','$title','$content',NOW())";
+            if($content==''){
+                echo "<h2>Please enter topic description</h2>";
+                exit();
+            }else {
 
-            $runInsert = mysqli_query($con,$insert);
+                $insert = "insert into post (user_id,topic_id,post_title,post_content,post_date) values ('$user_id','$topic','$title','$content',NOW())";
 
-            if($runInsert){
+                $runInsert = mysqli_query($con, $insert);
 
-                $update = "update users set posts ='yes' where user_id='$user_id'";
-                if(mysqli_query($con,$update)){
-                    echo "<h3>Posted to timeline, Great!</h3>";
+                if ($runInsert) {
+
+                    $update = "update users set posts ='yes' where user_id='$user_id'";
+                    if (mysqli_query($con, $update)) {
+                        echo "<h3>Posted to timeline, Great!</h3>";
+                    }
+                } else {
+                    echo "<h3>Something went wrong, Try Later!</h3>";
                 }
-            }else{
-                echo "<h3>Something went wrong, Try Later!</h3>";
             }
         }
     }
@@ -87,6 +93,57 @@
                     ";
         }
         include ("pagination.php");
+    }
+
+    function singlePost(){
+        global $con;
+
+        if(isset($_GET['post_id'])){
+            $getId = $_GET['post_id'];
+            $getPost = "select * from post where post_id = '$getId'";
+            $runGetPost = mysqli_query($con,$getPost);
+
+            $row_post = mysqli_fetch_array($runGetPost);
+
+            $post_id = $row_post['post_id'];
+            $user_id = $row_post['user_id'];
+            $post_title = $row_post['post_title'];
+            $content = $row_post['post_content'];
+            $post_date = $row_post['post_date'];
+
+            $user = "select * from users where user_id = '$user_id' and posts='yes'";
+
+            $runUser = mysqli_query($con,$user);
+            $row_user = mysqli_fetch_array($runUser);
+            $user_name = $row_user['user_name'];
+            $user_image = $row_user['user_image'];
+
+            echo "<div id='posts'>
+                <p><img src='user/user_images/$user_image' width='50' height='50'></p>
+                <h3><a href='user_profile.php?user_id=$user_id'>$user_name</a></h3>
+                <h3>$post_title</h3>
+                <p>$post_date</p>
+                <p>$content</p>
+                </div>
+                
+                <form action='' method='post' id='replayForm'>
+                    <textarea cols='65' rows='5' name='comment' placeholder='Write to replay'></textarea>
+                    <input type='submit' name='replay' value='Replay to Post' />  
+                </form>
+                ";
+
+            if(isset($_POST['replay'])){
+                $comment = $_POST['comment'];
+
+                $insert = "insert into comments (post_id,user_id,comment,date) values('$post_id','$user_id','$comment',NOW())";
+
+                $runInsert = mysqli_query($con,$insert);
+
+                echo "<h2>Your Replay was sudmitted!</h2>";
+
+            }
+
+        }
     }
 
 ?>

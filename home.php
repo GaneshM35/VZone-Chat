@@ -3,6 +3,11 @@
     include ("config/connection.php");
     include ("function/functions.php");
     //$user_id = $_SESSION['user_id'];
+
+    if(!isset($_SESSION['user_mail'])){
+        header("location: index.php");
+    }else{
+
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +84,7 @@
             <div id="content_timeline">
                 <form action="home.php?id=<?php echo $user_id; ?>" method="post" id="postForm">
                     <h2>Do you have any question today? </h2>
-                    <input type="text" name="title" placeholder="Question about??" size="82"/>
+                    <input type="text" name="title" placeholder="Question about??" required="required" size="82"/>
                     <br>
                     <textarea cols="83" rows="4" name="content" placeholder="Description.."></textarea>
                     <br>
@@ -100,3 +105,5 @@
     </div >
 </body>
 </html>
+
+<?php } ?>
