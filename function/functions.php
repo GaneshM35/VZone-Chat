@@ -98,6 +98,7 @@
     function singlePost(){
         global $con;
 
+
         if(isset($_GET['post_id'])){
             $getId = $_GET['post_id'];
             $getPost = "select * from post where post_id = '$getId'";
@@ -124,18 +125,25 @@
                 <h3>$post_title</h3>
                 <p>$post_date</p>
                 <p>$content</p>
-                </div>
+                </div>";
+
+            include("comments.php");
                 
-                <form action='' method='post' id='replayForm'>
+            echo "<form action='' method='post' id='replayForm'>
                     <textarea cols='65' rows='5' name='comment' placeholder='Write to replay'></textarea>
                     <input type='submit' name='replay' value='Replay to Post' />  
-                </form>
-                ";
+                </form>";
 
             if(isset($_POST['replay'])){
                 $comment = $_POST['comment'];
+                $comment_user = $_SESSION['user_mail'];
 
-                $insert = "insert into comments (post_id,user_id,comment,date) values('$post_id','$user_id','$comment',NOW())";
+                $getCurUser = "select * from users where user_mail = '$comment_user'";
+                $rungetCurUser = mysqli_query($con,$getCurUser);
+                $row_user = mysqli_fetch_array($rungetCurUser);
+                $comment_auth = $row_user['user_name'];
+
+                $insert = "insert into comments (post_id,user_id,comment,comment_auth,date) values('$post_id','$user_id','$comment','$comment_auth',NOW())";
 
                 $runInsert = mysqli_query($con,$insert);
 

@@ -2,7 +2,8 @@
     session_start();
     include ("config/connection.php");
     include ("function/functions.php");
-    //$user_id = $_SESSION['user_id'];
+    //global $user_id ;
+    $user_id = $_SESSION['user_id'];
 
     if(!isset($_SESSION['user_mail'])){
         header("location: index.php");

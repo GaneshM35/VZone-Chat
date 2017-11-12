@@ -110,7 +110,7 @@ body {
 #content_timeline{
     float: right;
     width: 700px;
-    padding: 10px;
+    padding: 5px;
 }
 
 #postForm input{
@@ -220,6 +220,13 @@ body {
 #replayForm input:hover{
     background-color: #00FFFF;
 }
+
+#comments{
+    background-color: #6495ED;
+    padding: 3px;
+    width: 600px;
+}
+
 
 #footer{
     width:100%;
